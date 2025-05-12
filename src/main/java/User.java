@@ -19,7 +19,6 @@ public class User {
         this.isAdmin = isAdmin;
     }
 
-    // Геттеры
     public int getId() { return id; }
     public String getUsername() { return username; }
     public String getEmail() { return email; }

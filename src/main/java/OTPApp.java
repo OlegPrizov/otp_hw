@@ -10,21 +10,21 @@ public class OTPApp {
     private static final AuthService authService = new AuthService();
     private static byte[] secretKey;
 
-    // Настройки SMTP
+    // SMTP
     private static final String SMTP_HOST = "smtp.gmail.com";
     private static final int SMTP_PORT = 587;
     private static final String EMAIL_USERNAME = "your.email@gmail.com";
     private static final String EMAIL_PASSWORD = "yourpassword";
     private static final boolean USE_TLS = true;
 
-    // Настройки SMPP
+    // SMPP
     private static final String SMPP_HOST = "smpp.example.com";
     private static final int SMPP_PORT = 2775;
     private static final String SMPP_SYSTEM_ID = "your_smpp_login";
     private static final String SMPP_PASSWORD = "your_smpp_password";
     private static final String SMPP_SOURCE_ADDR = "OTPService";
 
-    // Настройки Telegram
+    // Telegram
     private static final String TELEGRAM_BOT_TOKEN = "ваш_bot_token";
     private static final String TELEGRAM_BOT_USERNAME = "ваш_bot_username";
 

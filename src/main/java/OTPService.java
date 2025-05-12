@@ -1,5 +1,4 @@
 import java.sql.*;
-import java.time.LocalDateTime;
 
 public class OTPService {
     public static void saveOTP(int userId, String code) throws SQLException {
