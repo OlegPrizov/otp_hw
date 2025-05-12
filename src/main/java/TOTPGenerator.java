@@ -12,14 +12,14 @@ public class TOTPGenerator {
 
     private final byte[] secretKey;
 
-    public TOTPGenerator(byte[] secretKey) {
-        this.secretKey = secretKey;
-    }
-
     public static byte[] generateSecretKey() {
         byte[] key = new byte[20];
         new SecureRandom().nextBytes(key);
         return key;
+    }
+
+    public TOTPGenerator(byte[] secretKey) {
+        this.secretKey = secretKey;
     }
 
     public String generateTOTP() {
@@ -62,11 +62,12 @@ public class TOTPGenerator {
         return generateTOTP().equals(userCode);
     }
 
+    public static byte[] base32ToBytes(String base32) {
+        return Base64.getDecoder().decode(base32);
+    }
+
     public static String bytesToBase32(byte[] bytes) {
         return Base64.getEncoder().encodeToString(bytes);
     }
 
-    public static byte[] base32ToBytes(String base32) {
-        return Base64.getDecoder().decode(base32);
-    }
 }

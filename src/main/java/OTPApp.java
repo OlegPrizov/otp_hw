@@ -10,13 +10,6 @@ public class OTPApp {
     private static final AuthService authService = new AuthService();
     private static byte[] secretKey;
 
-    // SMTP
-    private static final String SMTP_HOST = "smtp.gmail.com";
-    private static final int SMTP_PORT = 587;
-    private static final String EMAIL_USERNAME = "your.email@gmail.com";
-    private static final String EMAIL_PASSWORD = "yourpassword";
-    private static final boolean USE_TLS = true;
-
     // SMPP
     private static final String SMPP_HOST = "smpp.example.com";
     private static final int SMPP_PORT = 2775;
@@ -24,7 +17,14 @@ public class OTPApp {
     private static final String SMPP_PASSWORD = "your_smpp_password";
     private static final String SMPP_SOURCE_ADDR = "OTPService";
 
-    // Telegram
+    // SMTP
+    private static final String SMTP_HOST = "smtp.gmail.com";
+    private static final int SMTP_PORT = 587;
+    private static final String EMAIL_USERNAME = "your.email@gmail.com";
+    private static final String EMAIL_PASSWORD = "yourpassword";
+    private static final boolean USE_TLS = true;
+
+    // Телеграм
     private static final String TELEGRAM_BOT_TOKEN = "ваш_bot_token";
     private static final String TELEGRAM_BOT_USERNAME = "ваш_bot_username";
 
@@ -35,20 +35,11 @@ public class OTPApp {
 
     public static void main(String[] args) {
         try {
-            // Инициализация сервисов
             DatabaseManager.initializeDatabase();
             initializeServices();
-
-            // Очистка устаревших OTP
             OTPService.cleanupExpiredOTPs();
-
-            // Главное меню (вход/регистрация)
             User currentUser = authMenu();
-
-            // Инициализация TOTP
             TOTPGenerator otpGenerator = initTOTP(scanner, currentUser);
-
-            // Главное меню
             mainMenuLoop(currentUser, otpGenerator);
 
         } catch (Exception e) {
